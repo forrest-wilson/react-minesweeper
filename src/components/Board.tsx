@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateBoard, TCell } from "../helpers/board-generator";
 import './Board.css'
 
@@ -9,20 +9,32 @@ function Board() {
 
   const [board, setBoard] = useState(generateBoard(numRows, numCols, numBombs))
 
+  let rows = [...Array(numRows)].map((_, i) => {
+    return board.filter(val => val.row === i)
+  })
+
   const handleClick = (cell: TCell) => {
     const copy = [...board]
 
-    let found = copy[cell.row][cell.column]
-    found.isShown = true
+    const foundIndex = copy.findIndex(c => c.id === cell.id)
+    copy[foundIndex].isShown = true
 
-    copy[cell.row].splice(cell.column, 1, found)
+    copy.splice(foundIndex, 1, copy[foundIndex])
 
     setBoard(copy)
   }
 
+  useEffect(() => {
+    if (board.some(cell => cell.hasBomb && cell.isShown)) {
+      // TODO: stop the game and notify the user that they lost
+      alert('Game over!')
+      setBoard(generateBoard(numRows, numCols, numBombs))
+    }
+  }, [board])
+
   return (
     <div className="board">
-      {board.map((row, i) => {
+      {rows.map((row, i) => {
         return <div className="row" key={i}>
           {
             row.map(cell => <div key={cell.id} className={`cell ${cell.isShown ? 'is-shown' : ''}`} onClick={() => handleClick(cell)}>

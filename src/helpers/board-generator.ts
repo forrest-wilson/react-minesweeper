@@ -8,7 +8,7 @@ export type TCell = {
   column: number
 }
 
-export const generateBoard = (rows: number = 5, columns: number = 5, bombs: number = 5): TCell[][]  => {
+export const generateBoard = (rows: number = 5, columns: number = 5, bombs: number = 5): TCell[]  => {
   if (bombs >= (rows * columns)) {
     throw new Error("Number of bombs cannot exceed number of cells (rows x columns)")
   }
@@ -20,7 +20,7 @@ export const generateBoard = (rows: number = 5, columns: number = 5, bombs: numb
 
   // Pick random indices for the bombs, making sure that indices are unique
   while (bombIndexes.length < bombs) {
-    let randomIndex = Math.floor(Math.random() * (boardLength - 1))
+    let randomIndex = Math.floor(Math.random() * boardLength)
 
     if (!bombIndexes.includes(randomIndex)) {
       bombIndexes.push(randomIndex)
@@ -43,7 +43,5 @@ export const generateBoard = (rows: number = 5, columns: number = 5, bombs: numb
     cells.push(cell)
   }
 
-  return [...Array(rows)].map((_, i) => {
-    return cells.filter(val => val.row === i)
-  })
+  return cells
 }
