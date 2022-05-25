@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateBoard, TCell } from "../helpers/board-generator";
 import './Board.css'
 
@@ -17,8 +17,12 @@ function Board() {
 
     copy[cell.row].splice(cell.column, 1, found)
 
-    setBoard(copy)   
+    setBoard(copy)
   }
+
+  useEffect(() => {
+    console.log('board updated')
+  }, [board])
 
   return (
     <div className="board">
@@ -26,7 +30,7 @@ function Board() {
         return <div className="row" key={i}>
           {
             row.map(cell => <div key={cell.id} className={`cell ${cell.isShown ? 'is-shown' : ''}`} onClick={() => handleClick(cell)}>
-              <div className="text">{cell.row}, {cell.column}</div>
+              <div className="text">{cell.hasBomb ? 'B': ''}</div>
             </div>)
           }
         </div>
