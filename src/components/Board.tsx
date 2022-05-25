@@ -24,9 +24,11 @@ function Board() {
     <div className="board">
       {board.map((row, i) => {
         return <div className="row" key={i}>
-          {row.map(cell => <div key={cell.id} className={`cell ${cell.isShown ? 'is-shown' : ''}`} onClick={() => handleClick(cell)}>
-            <div className="text">{cell.row}, {cell.column}</div>
-          </div>)}
+          {
+            row.map(cell => <div key={cell.id} className={`cell ${cell.isShown ? 'is-shown' : ''}`} onClick={() => handleClick(cell)}>
+              <div className="text">{cell.row}, {cell.column}</div>
+            </div>)
+          }
         </div>
       })}
     </div>
