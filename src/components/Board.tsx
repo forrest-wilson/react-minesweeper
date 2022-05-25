@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { generateBoard, TCell } from "../helpers/board-generator";
 import './Board.css'
 
@@ -19,10 +19,6 @@ function Board() {
 
     setBoard(copy)
   }
-
-  useEffect(() => {
-    console.log('board updated')
-  }, [board])
 
   return (
     <div className="board">
