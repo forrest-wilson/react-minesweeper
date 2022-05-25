@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowUnreachableCode": false,
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2019",
+      "esnext"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outDir": "./dist/",
+    "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": true,
+    "target": "es5",
+    "typeRoots": [
+      "./assets/definitions/types.d.ts",
+      "./node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "./assets/src/**/*",
+    "./assets/definitions/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
