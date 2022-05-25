@@ -1,7 +1,5 @@
-import { v4 } from 'uuid';
-
 export type TCell = {
-	id: string;
+	id: number;
 	isShown: boolean;
 	hasBomb: boolean;
 	row: number;
@@ -37,7 +35,7 @@ export const generateBoard = (
 	for (let i = 0; i < boardLength; i++) {
 		// Rows and columns are 0 indexed
 		const cell: TCell = {
-			id: v4(),
+			id: i,
 			isShown: false,
 			hasBomb: bombIndexes.includes(i),
 			row: Math.floor(i / columns),

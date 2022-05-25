@@ -4,8 +4,8 @@ import Cell from '../cell/Cell';
 import './Board.css';
 
 function Board() {
-	const numRows = 10;
-	const numCols = 10;
+	const numRows = 9;
+	const numCols = 9;
 	const numBombs = 10;
 
 	const [board, setBoard] = useState(generateBoard(numRows, numCols, numBombs));
@@ -39,7 +39,7 @@ function Board() {
 				return (
 					<div className="row" key={i}>
 						{row.map((cell) => (
-							<Cell cell={cell} handleClick={handleClick} />
+							<Cell cell={cell} handleClick={handleClick} key={cell.id} />
 						))}
 					</div>
 				);
