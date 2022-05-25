@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { generateBoard, TCell } from "../helpers/board-generator";
+import { generateBoard, TCell } from "../../helpers/board-generator";
+import Cell from "../cell/Cell";
 import './Board.css'
 
 function Board() {
@@ -35,13 +36,11 @@ function Board() {
   return (
     <div className="board">
       {rows.map((row, i) => {
-        return <div className="row" key={i}>
-          {
-            row.map(cell => <div key={cell.id} className={`cell ${cell.isShown ? 'is-shown' : ''}`} onClick={() => handleClick(cell)}>
-              <div className="text">{cell.hasBomb ? 'B': ''}</div>
-            </div>)
-          }
-        </div>
+        return (
+          <div className="row" key={i}>
+            {row.map(cell => <Cell cell={cell} handleClick={handleClick} />)}
+          </div>
+        )
       })}
     </div>
   );
