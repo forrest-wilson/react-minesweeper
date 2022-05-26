@@ -1,17 +1,23 @@
 .cell {
-	border: 5px solid red;
-	background-color: blue;
-	width: 50px;
-	height: 50px;
+	border: 5px solid;
+	border-top-color: white;
+	border-left-color: white;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	background-color: lightgrey;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	box-sizing: border-box;
 }
 
 .cell.is-shown {
-	background-color: orange;
+	border: 2px solid #666;
 }
 
 .cell > .text {
-	color: white;
+	color: #444;
+	font-weight: bold;
 }
